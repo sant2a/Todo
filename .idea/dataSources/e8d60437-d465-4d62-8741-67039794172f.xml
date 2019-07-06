@@ -921,7 +921,7 @@
     <table id="231" parent="2" name="migration_versions">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="232" parent="2" name="todo">
+    <table id="232" parent="2" name="todo1">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
     <table id="233" parent="2" name="user">
@@ -973,7 +973,6 @@
     <column id="241" parent="232" name="created_at">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="242" parent="232" name="PRIMARY">
