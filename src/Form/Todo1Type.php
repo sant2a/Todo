@@ -41,6 +41,7 @@ class Todo1Type extends AbstractType
                 'title' => 'Select the create date')))
 
             ->add('save', SubmitType::class, array(
+
                 'label' => 'Создать',
                 'attr' => array(
                     'class' => 'btn btn-primary',

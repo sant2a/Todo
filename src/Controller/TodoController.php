@@ -36,7 +36,7 @@ class TodoController extends AbstractController
             ->getRepository(Todo1::class);
         $todos = $repository->findBy(["name" => $this->getUser()]);
         return $this->render(
-            'todo/index.html.twig',
+            'todo/fullHome.html.twig',
             ['todos' => $todos]
         );
     }

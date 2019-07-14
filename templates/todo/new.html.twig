@@ -3,11 +3,36 @@
 {% block title %}New Todo{% endblock %}
 
 {% block body %}
-    <h1>Create new Todo</h1>
+    <div class="container">
+        <div class="col-12">
+            <h1>Заполните форму</h1>
+            {{ include('todo/_form.html.twig') }}
+            <a href="{{ path('todo_index') }}"><button class="btn btn-lg btn-primary">Вернуться к списку</button></a>
+        </div>
+    </div>
+    <style>
+        form {
 
-    {{ include('todo/_form.html.twig') }}
 
-    <a href="{{ path('todo_index') }}">back to list</a>
+        }
 
+        body {
 
+            background: url("../img/bg-masthead.jpg") no-repeat fixed center;
+            -webkit-background-size: 100%;
+        }
+
+        h1 {
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        .contact-section {
+            padding-top: 80px;
+        }
+
+        footer {
+            padding-top: 30px;
+        }
+    </style>
 {% endblock %}

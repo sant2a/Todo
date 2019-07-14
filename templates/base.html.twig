@@ -18,11 +18,12 @@
 </head>
 
     <!-- Navigation -->
-    <body id="page-top">
+
     {% block head %}
+<body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ path('home') }}">To Do List</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ path('full_home') }}">To Do List</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -33,23 +34,22 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#projects">Инфо</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('todo_index') }}">Список дел</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('app_login') }}">Войти</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('register') }}">Регистрация</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('logout') }}">Выйти</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    </body>
-{% endblock %}
+</body>
+    {% endblock %}
+
 {% block body %}
 {% endblock %}
-{% block footer %}
+{% block siteFooter %}
     <section class="contact-section bg-black">
         <div class="container">
 
@@ -92,13 +92,13 @@
             </div>
 
             <div class="social d-flex justify-content-center">
-                <a href="#" class="mx-2">
+                <a href="https://twitter.com/Maks94233887" class="mx-2">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="mx-2">
-                    <i class="fab fa-facebook-f"></i>
+                <a href="https://vk.com/hatersgonnahate96" class="mx-2">
+                    <i class="fab fa-vk"></i>
                 </a>
-                <a href="#" class="mx-2">
+                <a href="https://github.com/sant2a" class="mx-2">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -111,22 +111,17 @@
         </div>
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="/public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/grayscale.min.js"></script>
+    <script src="/js/grayscale.min.js"></script>
 
 {% endblock %}
-<style>
-body{
 
-}
-
-</style>
 {% block javascripts %}
 
 {% endblock %}
