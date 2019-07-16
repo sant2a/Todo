@@ -31,9 +31,15 @@
         </tbody>
     </table>
 
-    <a href="{{ path('todo_index') }}">back to list</a>
+    <a href="{{ path('own_todos') }}">back to list</a>
 
     <a href="{{ path('todo_edit', {'id': todo.id}) }}">edit</a>
 
     {{ include('todo/_delete_form.html.twig') }}
+    <style>
+        body {
+
+            background: url("../img/bg-masthead.jpg") no-repeat fixed  center ;
+            -webkit-background-size: 100%;
+        }</style>
 {% endblock %}

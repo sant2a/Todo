@@ -7,14 +7,10 @@
         <div class="col-12">
             <h1>Заполните форму</h1>
             {{ include('todo/_form.html.twig') }}
-            <a href="{{ path('todo_index') }}"><button class="btn btn-lg btn-primary">Вернуться к списку</button></a>
+            <a href="{{ path('own_todos') }}"><button class="btn btn-lg btn-primary">Вернуться к списку</button></a>
         </div>
     </div>
     <style>
-        form {
-
-
-        }
 
         body {
 
@@ -28,11 +24,12 @@
         }
 
         .contact-section {
-            padding-top: 80px;
+            padding-top: 20px;
         }
 
         footer {
-            padding-top: 30px;
+            padding-top: 10px;
         }
+
     </style>
 {% endblock %}

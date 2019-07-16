@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -34,6 +36,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Todo1", mappedBy="author")
+     */
+    private $todo1s;
+
+    public function __construct()
+    {
+        $this->todo1s = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -111,5 +123,36 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Todo1[]
+     */
+    public function getTodo1s(): Collection
+    {
+        return $this->todo1s;
+    }
+
+    public function addTodo1(Todo1 $todo1): self
+    {
+        if (!$this->todo1s->contains($todo1)) {
+            $this->todo1s[] = $todo1;
+            $todo1->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTodo1(Todo1 $todo1): self
+    {
+        if ($this->todo1s->contains($todo1)) {
+            $this->todo1s->removeElement($todo1);
+            // set the owning side to null (unless already changed)
+            if ($todo1->getAuthor() === $this) {
+                $todo1->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 }

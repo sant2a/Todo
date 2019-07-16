@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Todo1;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -16,6 +18,11 @@ class Todo1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('author', EntityType::class, [
+                'label' => "Автор",
+                'required' => true,
+                'class' => User::class,
+                'choice_label' => 'email'])
             ->add('name', TextareaType::class, array('attr' => array(
                 'class' => 'form-control',
                 'title' => 'Enter the task name',

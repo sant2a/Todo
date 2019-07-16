@@ -26,24 +26,27 @@ class TodoController extends AbstractController
             'todos' => $todoRepository->findAll(),
         ]);
     }
+
     /**
-     * @Route("/own", name="own_todo")
+     * @Route("/own", name="own_todos")
+     * @return Response
      */
-    public function ownBooks()
+    public function ownTodo()
     {
         $repository = $this
             ->getDoctrine()
             ->getRepository(Todo1::class);
-        $todos = $repository->findBy(["name" => $this->getUser()]);
+        $todo = $repository->findBy(["author" => $this->getUser()]);
         return $this->render(
-            'todo/fullHome.html.twig',
-            ['todos' => $todos]
+            'todo/todolist.html.twig',
+            ['todos' => $todo]
         );
     }
 
-
     /**
      * @Route("/new", name="todo_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -56,7 +59,7 @@ class TodoController extends AbstractController
             $entityManager->persist($todo);
             $entityManager->flush();
 
-            return $this->redirectToRoute('own_todo');
+            return $this->redirectToRoute('own_todos');
         }
 
         return $this->render('todo/new.html.twig', [
@@ -88,7 +91,7 @@ class TodoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('todo_index', [
+            return $this->redirectToRoute('own_todos', [
                 'id' => $todo->getId(),
             ]);
         }
@@ -110,6 +113,6 @@ class TodoController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('todo_index');
+        return $this->redirectToRoute('own_todos');
     }
 }

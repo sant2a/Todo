@@ -4,19 +4,18 @@
 
 {% block body %}
 
+    <div class="container">
+    <div class="row">
+
     {% for todo in todos %}
-        <div class="container">
-            <div class="col-2">
-                <div class="row">
-                    <div class="card-deck">
-                        <div class="card" style="width: 50rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ todo.name }}</h5>
-                                <p class="card-text">{{ todo.description }}</p>
-                                <a href="{{ path('todo_show', {'id': todo.id}) }}" class="card-link">Посмотреть</a>
-                                <a href="{{ path('todo_edit', {'id': todo.id}) }}" class="card-link">Изменить</a>
-                            </div>
-                        </div>
+        <div class="col-2">
+            <div class="row">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ todo.name }}</h5>
+                        <p class="card-text">{{ todo.description }}</p>
+                        <a href="{{ path('todo_show', {'id': todo.id}) }}" class="card-link">Посмотреть</a>
+                        <a href="{{ path('todo_edit', {'id': todo.id}) }}" class="card-link">Изменить</a>
                     </div>
                 </div>
             </div>
@@ -26,6 +25,7 @@
             <td colspan="6">no records found</td>
         </tr>
     {% endfor %}
+        </div></div>
 
     <h1>Todo index</h1>
 
@@ -65,7 +65,6 @@
     <style>
         form {
 
-
         }
 
         .col-2 {
@@ -73,8 +72,8 @@
         }
 
         body {
-
-
+            background: url("../img/bg-masthead.jpg") no-repeat fixed  center ;
+            -webkit-background-size: 100%;
         }
 
         h1 {
@@ -91,7 +90,7 @@
         }
 
         .card {
-           text-align: center;
+            text-align: center;
         }
     </style>
 {% endblock %}

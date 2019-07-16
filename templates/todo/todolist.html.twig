@@ -3,41 +3,56 @@
 {% block title %}Todo index{% endblock %}
 
 {% block body %}
-    <h1>Todo index</h1>
+    <div class="container">
+        <div class="row">
+            {% for todo in todos %}
+                <div class="col-2">
+                    <div class="row">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ todo.name }}</h5>
+                                <p class="card-text">{{ todo.description }}</p>
+                                <div class="buttons-1">
+                                <a href="{{ path('todo_show', {'id': todo.id}) }}" class="card-link"><button class="btn  btn-primary">Посмотреть</button></a>
+                                <a href="{{ path('todo_edit', {'id': todo.id}) }}" class="card-link">Изменить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12">
+                <div class="row">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Имя</th>
-                <th>Описание действия</th>
-                <th>Приоритет</th>
-                <th>Дата создания</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for todo in todos %}
-            <tr>
-                <td>{{ todo.id }}</td>
-                <td>{{ todo.name }}</td>
-                <td>{{ todo.description }}</td>
-                <td>{{ todo.priority }}</td>
-                <td>{{ todo.createdAt ? todo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('todo_show', {'id': todo.id}) }}">show</a>
-                    <a href="{{ path('todo_edit', {'id': todo.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-<style>
-    *{color: white}
-</style>
-    <a href="{{ path('todo_new') }}">Create new</a>
+                <h1>Пока нет записей...</h1>
+                </div></div>
+            {% endfor %}
+        </div>
+<div class="create-button">
+        <a href="{{ path('todo_new') }}"><button class="btn btn-lg btn-primary">Создать новое действие!</button></a>
+</div>
+</div>
+    <style>
+        body {
+
+            background: url("../img/bg-masthead.jpg") no-repeat fixed  center ;
+            -webkit-background-size: 100%;
+        }
+        h1{
+
+            padding-top: 100px;
+        }
+        .contact-section{
+            padding-top: 350px;
+        }
+        .create-button{
+            padding-top: 100px;
+        }
+        .col-2{
+            padding-top: 50px;
+        }
+        .buttons-1{
+            text-align: center;
+        }
+    </style>
 {% endblock %}

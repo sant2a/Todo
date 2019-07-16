@@ -36,6 +36,11 @@ class Todo1
      */
     private $created_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="todo1s")
+     */
+    private $author;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Todo1
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
