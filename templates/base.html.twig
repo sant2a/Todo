@@ -5,25 +5,40 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
 
     {% block stylesheets %}
+        <style>
+            .content {
+                padding-top: 80px;
 
+            }
+
+            body {
+
+
+                background:  url("../img/bg-masthead.jpg")no-repeat fixed center;
+                -webkit-background-size: 100%;
+            }
+a{
+    font-size: 20px;
+}
+        </style>
     {% endblock %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="/css/grayscale.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
 
-    <link href="scss/_navbar.css" rel="stylesheet">
+    <link href="/scss/_navbar.css" rel="stylesheet">
 
 </head>
 
@@ -70,64 +85,28 @@
 {% block body %}
 {% endblock %}
 {% block siteFooter %}
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Address</h4>
-                            <hr class="my-4">
-                            <div class="small text-black-50">4923 Market Street, Orlando FL</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-envelope text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Email</h4>
-                            <hr class="my-4">
-                            <div class="small text-black-50">
-                                <a href="#">hello@yourdomain.com</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-mobile-alt text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Телефон</h4>
-                            <hr class="my-4">
-                            <div class="small text-black-50">+1 (555) 902-8832</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="social d-flex justify-content-center">
-                <a href="https://twitter.com/Maks94233887" class="mx-2">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://vk.com/hatersgonnahate96" class="mx-2">
-                    <i class="fab fa-vk"></i>
-                </a>
-                <a href="https://github.com/sant2a" class="mx-2">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-
+    <div class="content">
+        <div class="social d-flex justify-content-center">
+            <a href="https://twitter.com/Maks94233887" class="mx-2">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://vk.com/hatersgonnahate96" class="mx-2">
+                <i class="fab fa-vk"></i>
+            </a>
+            <a href="https://github.com/sant2a" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
         </div>
-    </section>
-    <footer class=" small text-center text-white-50">
-        <div class="container">
-            Copyright &copy; Your Website 2019
-        </div>
-    </footer>
+
+
+        <footer class=" small text-center text-white-50">
+            <div class="container">
+                Copyright &copy; Your Website 2019
+            </div>
+        </footer>
+
+    </div>
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

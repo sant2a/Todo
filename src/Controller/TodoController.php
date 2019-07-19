@@ -104,15 +104,18 @@ class TodoController extends AbstractController
 
     /**
      * @Route("/{id}", name="todo_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Todo1 $todo
+     * @return Response
      */
-    public function delete(Request $request, Todo1 $todo): Response
+    public function deleteTodo(Request $request, Todo1 $todo): Response
     {
         if ($this->isCsrfTokenValid('delete'.$todo->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($todo);
             $entityManager->flush();
-        }
+
 
         return $this->redirectToRoute('own_todos');
     }
-}
+}}

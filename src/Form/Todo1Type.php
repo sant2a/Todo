@@ -49,7 +49,7 @@ class Todo1Type extends AbstractType
 
             ->add('save', SubmitType::class, array(
 
-                'label' => 'Создать',
+                'label' => 'Сохранить',
                 'attr' => array(
                     'class' => 'btn btn-primary',
                     'title' => 'Create task'
