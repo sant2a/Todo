@@ -39,7 +39,9 @@ class TodoController extends AbstractController
         $todo = $repository->findBy(["author" => $this->getUser()]);
         return $this->render(
             'todo/todolist.html.twig',
-            ['todos' => $todo]
+            ['todos' => $todo,
+                'todo'=>$todo
+            ]
         );
     }
 
@@ -108,7 +110,7 @@ class TodoController extends AbstractController
      * @param Todo1 $todo
      * @return Response
      */
-    public function deleteTodo(Request $request, Todo1 $todo): Response
+    public function delete(Request $request, Todo1 $todo): Response
     {
         if ($this->isCsrfTokenValid('delete'.$todo->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -117,5 +119,6 @@ class TodoController extends AbstractController
 
 
         return $this->redirectToRoute('own_todos');
-    }
-}}
+    }}
+
+}
