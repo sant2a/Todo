@@ -6,48 +6,33 @@
 <div class="container">
     <div class="col-5">
         <div class="row">
-            <h1>Todo</h1>
-
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ todo.id }}</td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td>{{ todo.name }}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{{ todo.description }}</td>
-                </tr>
-                <tr>
-                    <th>Priority</th>
-                    <td>{{ todo.priority }}</td>
-                </tr>
-                <tr>
-                    <th>Created_at</th>
-                    <td>{{ todo.createdAt ? todo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <a href="{{ path('own_todos') }}">back to list</a>
-
-            <a href="{{ path('todo_edit', {'id': todo.id}) }}">edit</a>
-
-            {{ include('todo/_delete_form.html.twig') }}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ todo.name }}</h5>
+                    <p class="card-text">Описание: {{ todo.description }} </p>
+                    <p class="card-text">Важность: {{ todo.priority }}</p>
+                    <p class="card-text">Дата создания: {{ todo.createdAt ? todo.createdAt|date('Y-m-d H:i:s') : '' }} </p>
+                    <a href="{{ path('own_todos') }}" class="btn btn-primary">Вернуться к списку</a>
+                    <a href="{{ path('todo_edit', {'id': todo.id}) }}" class="btn btn-primary">Изменить</a>
+                    {{ include('todo/_delete_form.html.twig') }}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </div></div>
 
     <style>
-        body {
-
-            background: -webkit-gradient(rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/bg-masthead.jpg") no-repeat fixed center;
-
-            -webkit-background-size: 100%
+        .col-5 {
+            margin-top: 80px;
+        }
+        .btn {
+            margin-bottom: 5px;
+        }
+        h5{
+            text-align: center;
+            font-size: 30px;
+        }
+        p{
+            font-size: 18px;
         }
         </style>
 {% endblock %}

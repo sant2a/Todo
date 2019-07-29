@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,16 +24,20 @@ class Todo1Type extends AbstractType
                 'required' => true,
                 'class' => User::class,
                 'choice_label' => 'email'])
-            ->add('name', TextareaType::class, array('attr' => array(
-                'class' => 'form-control',
-                'title' => 'Enter the task name',
-                'choice_label' => 'email',
-            )))
-            ->add('description', TextareaType::class, array('attr' => array(
-                'class' => 'form-control',
-                'title' => 'Enter the description',
-            )))
+            ->add('name', TextType::class, [
+                'required' => true,
+                'label' => "Задача:",
+                'attr' => [
+                    'placeholder' => 'введите название задачи '
+                ]
+            ])
+            ->add('description', TextType::class,[
+                'label' => "Описание",
+                'required' => true,
+
+            ])
             ->add('priority', ChoiceType::class, array(
+                'label' => "Приоритет",
                 'choices' => array(
                     '1'       => '1',
                     '2'    => '2',
@@ -43,9 +48,10 @@ class Todo1Type extends AbstractType
                     'title' => 'Select the priority',
                 )
             ))
-            ->add('created_at',DateTimeType::class, array('attr' => array(
-
-                'title' => 'Select the create date')))
+            ->add('created_at',DateTimeType::class, [
+                'required' => true,
+                'label' => "Дата создания",
+               ])
 
             ->add('save', SubmitType::class, array(
 
