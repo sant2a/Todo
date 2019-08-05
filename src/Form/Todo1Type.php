@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Todo1;
 use App\Entity\User;
+use App\Controller\SecurityController;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -20,6 +21,7 @@ class Todo1Type extends AbstractType
     {
         $builder
             ->add('author', EntityType::class, [
+
                 'label' => "Автор",
                 'required' => true,
                 'class' => User::class,
@@ -71,6 +73,7 @@ class Todo1Type extends AbstractType
             'data_class' => Todo1::class,
         ]);
     }
+
 
 
 }

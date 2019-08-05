@@ -7,19 +7,26 @@
     {% block stylesheets %}
         <style>
 
-            .content {
-                padding-top: 80px;
-
-            }
-
-            body {
-                background:  url("/img/martin-adams-RCx7eaBL8Io-unsplash.jpg")no-repeat fixed center;
-                -webkit-background-size: 100%;
-            }
-a{
-    font-size: 20px;
+.content{
+    padding-top: 100px;
 }
 
+            body {
+                background: url("/img/martin-adams-RCx7eaBL8Io-unsplash.jpg") no-repeat fixed center;
+                -webkit-background-size: 100%;
+
+            }
+
+
+            a {
+                font-size: 20px;
+            }
+
+           .content {
+                flex: 1; /* если содержимое body меньше высоты окна, то section будет растянут до нужной величины */
+
+                -ms-flex-preferred-size: auto;
+            }
         </style>
     {% endblock %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -45,47 +52,48 @@ a{
 <!-- Navigation -->
 
 {% block head %}
-    <body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ path('home') }}">To Do List</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{{ path('own_todos') }}">Список дел</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{{ path('logout') }}">Выйти</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#about">Инфо</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{{ path('app_login') }}">Войти</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{{ path('register') }}">Регистрация</a>
-                        </li>
-                    {% endif %}
-                </ul>
+<div class="content">
+        <body id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="{{ path('home') }}">To Do List</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="{{ path('own_todos') }}">Список дел</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="{{ path('logout') }}">Выйти</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="#about">Инфо</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="{{ path('app_login') }}">Войти</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="{{ path('register') }}">Регистрация</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    </body>
+        </nav>
+        </body>
+</div>
 {% endblock %}
+{% block body %}{% endblock %}
 
-{% block body %}
-{% endblock %}
 {% block siteFooter %}
-
+<section>
     <div class="content">
         <div class="social d-flex justify-content-center">
             <a href="https://twitter.com/Maks94233887" class="mx-2">
@@ -102,10 +110,10 @@ a{
 
         <footer class=" small text-center text-white-50">
             <div class="container">
-                TodoList project  &copy; My website 2019
+                TodoList project &copy; My website 2019
             </div>
         </footer>
-
+</section>
     </div>
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>
