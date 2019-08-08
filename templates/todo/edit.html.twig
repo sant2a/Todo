@@ -29,14 +29,6 @@
         }
     </style>
     <script>
-        function deleteTodo() {
-            $.post("{{ path("delete_todo", {'todo': todo.id}) }}", {}, function (data) {
-                if(data.status === "success") {
-                    alert("Успешное удалине!");
-                } else {
-                    alert("Что-то пошло не так");
-                }
-            });
-        }
+
     </script>
 {% endblock %}

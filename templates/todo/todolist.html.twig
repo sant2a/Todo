@@ -37,10 +37,10 @@
                                         <i class="fas fa-user-edit"></i></a>
                                     <a href="{{ path('todo_show', {'id': todo.id}) }}" class="mx-2">
                                         <i class="fas fa-info-circle"></i></a>
-                                    <a href="" class="mx-2" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="fas fa-info-circle"></i></a>
-                                    <a href="" class="mx-2" onclick="deleteTodo()">
-                                        <i class="fas fa-info-circle"></i></a>
+{#                                    <a href="" class="mx-2" data-toggle="modal" data-target="#exampleModal">#}
+{#                                        <i class="fas fa-info-circle"></i></a>#}
+{#                                    <a href="" class="mx-2" onclick="deleteTodo({{ todo.id }})">#}
+{#                                        <i class="fas fa-info-circle"></i></a>#}
 
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
         }
 
         h1 {
-
+color:white;
             padding-top: 100px;
         }
 
@@ -120,22 +120,26 @@
         }
     </style>
     <script>
-        function showModal(name, description) {
-            let example = $("#exampleModal").html()
-                .replace('{todo.name}', name)
-                .replace('{todo.description}', description);
-            $("#exampleModal").after(example)
-        }
-
-        function deleteTodo() {
-            $.post("{{ path("delete_todo", {'id': todo.id}) }}", {}, function (data) {
-                if (data.status === "success") {
-                    alert("Успешное удалине!");
-                } else {
-                    alert("Что-то пошло не так");
-                }
-            });
-        }
+        // $('#exampleModal').on('shown.bs.modal', function () {
+        //     $('#myInput').trigger('focus')
+        // })
+        // function showModal(name, description) {
+        //     let example = $("#exampleModal").html()
+        //         .replace('{todo.name}', name)
+        //         .replace('{todo.description}', description);
+        //     $("#exampleModal").after(example)
+        // }
+        //
+        // function deleteTodo(id) {
+        //     $.post("", {}, function (data) {
+        //         if (data.status === "success") {
+        //             alert("Успешное удалине!");
+        //         } else {
+        //             alert("Что-то пошло не так");
+        //         }
+        //     });
+        //     console.log();
+        // }
 
 
     </script>
