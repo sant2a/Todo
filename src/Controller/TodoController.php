@@ -103,36 +103,36 @@ class TodoController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="todo_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Todo1 $todo
-     * @return Response
-     */
-    public function delete(Request $request, Todo1 $todo): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$todo->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($todo);
-            $entityManager->flush();
-
-
-        return $this->redirectToRoute('own_todos');
-    }}
-
+//
 //    /**
-//     * @Route("/{id}/delete", requirements={"todo"="\d+"}, name="delete_todo", methods={"POST"})
+//     * @Route("/{id}", name="todo_delete", methods={"DELETE"})
+//     * @param Request $request
 //     * @param Todo1 $todo
 //     * @return Response
 //     */
-//    public function deleteBook(Todo1 $todo) {
-//        $manager = $this->getDoctrine()->getManager();
-//        $manager->remove($todo);
-//        $manager->flush();
-//        $arr = ["status" => "success"];
-//        return $this->json($arr);
-//    }
+//    public function delete(Request $request, Todo1 $todo): Response
+//    {
+//        if ($this->isCsrfTokenValid('delete'.$todo->getId(), $request->request->get('_token'))) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->remove($todo);
+//            $entityManager->flush();
+//
+//
+//        return $this->redirectToRoute('own_todos');
+//    }}
+
+    /**
+     * @Route("/{id}/delete", requirements={"todo"="\d+"}, name="delete_todo", methods={"POST"})
+     * @param Todo1 $todo
+     * @return Response
+     */
+    public function deleteBook(Todo1 $todo) {
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($todo);
+        $manager->flush();
+        $arr = ["status" => "success"];
+        return $this->json($arr);
+    }
 //    /**
 //     * @Route("/own/{todo}.json", requirements={"todo"="\d+"}, name="book_page")
 //     * @param Todo1 $todo
